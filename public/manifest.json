@@ -1,0 +1,17 @@
+{
+  "name": "Notification",
+  "short_name": "Notification",
+  "theme_color": "#2196f3",
+  "background_color": "#2196f3",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/pushManagerImg.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ]
+}

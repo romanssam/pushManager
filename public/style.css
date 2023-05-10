@@ -1,0 +1,45 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: floralwhite;
+}
+
+img {
+  position: absolute;
+  top: -288%;
+  left: 10px;
+
+  opacity: 0;
+  transition: all .4s ease;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  padding: 24px 60px;
+  font-size: 24px;
+  font-weight: 600;
+
+  cursor: pointer;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  background-image: linear-gradient(to right, #a1c4fd 0%, #c2e9fb 51%, #a1c4fd 100%);
+}
+
+button:hover ~ img {
+  opacity: 1;
+  transition: all .4s ease;
+}
