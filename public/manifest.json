@@ -5,11 +5,11 @@
   "background_color": "#2196f3",
   "display": "standalone",
   "orientation": "portrait",
-  "scope": "/",
-  "start_url": "/",
+  "scope": "https://romanssam.github.io/pushManager/public/index.html",
+  "start_url": "https://romanssam.github.io/pushManager/public/index.html",
   "icons": [
     {
-      "src": "/pushManagerImg.png",
+      "src": "https://romanssam.github.io/pushManager/public/pushManagerImg.png",
       "type": "image/png",
       "sizes": "192x192"
     }
