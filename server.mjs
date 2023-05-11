@@ -35,9 +35,7 @@ webpush.setVapidDetails(
 app.options("*", cors());
 
 app.get('/', async(req, res) => {
-  res.status(200).send({
-    message: 'gay'
-  })
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
 })
 
 app.get('/send-notification', (req, res) => {
