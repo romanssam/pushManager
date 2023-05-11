@@ -14,8 +14,8 @@ function urlBase64ToUint8Array(base64String) {
 }
 
 async function run (){
-  const register = await navigator.serviceWorker.register('/public/sw.js', {
-    scope: "/public/"
+  const register = await navigator.serviceWorker.register('/pushManager/public/sw.js', {
+    scope: "/pushManager/"
   })
 
 const button = document.getElementById('subscribe');
