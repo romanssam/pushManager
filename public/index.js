@@ -18,6 +18,8 @@ async function run (){
     scope: "/"
   })
 
+  console.log(register)
+
 const button = document.getElementById('subscribe');
 
 button.addEventListener('click', async () => {
@@ -33,17 +35,24 @@ button.addEventListener('click', async () => {
 
     console.log(subscription)
 
-    await fetch("/save-subscription", {
+    await fetch("https://splendid-dog-baseball-cap.cyclic.app/save-subscription", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(subscription),
-      });
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => {
+          console.error("Ошибка при выполнении запроса:", error);
+        });
+  } else {
+    alert('разреши уведы мразь')
   }
 })
-
-  console.log(register)
 }
 
 run()

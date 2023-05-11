@@ -38,7 +38,7 @@ app.get('/send-notification', (req, res) => {
 app.post("/save-subscription", async (req, res) => {
   subscriptionData = req.body;
   res.status(200).send({
-    message: 'Успешно'
+    message: subscriptionData
   })
 });
 
