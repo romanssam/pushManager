@@ -1,0 +1,25 @@
+# runtime: nodejs
+# env: flex
+
+#  entrypoint: node server.mjs
+#  runtime_config:
+#    start_cmd: node server.mjs
+
+runtime: nodejs
+env: flex
+# Опционально: Укажите версию Node.js
+# runtime_config:
+#   nodejs_version: 14
+
+# Опционально: Укажите, как запустить ваше приложение
+# Путь к точке входа и порт, на котором ваше приложение слушает запросы
+# Если у вас есть файл app.js, и ваше приложение слушает порт 8080, используйте:
+# entrypoint: node app.js
+# runtime_config:
+#   start_cmd: node app.js
+
+# Опционально: Укажите параметры окружения, если необходимо
+# env_variables:
+#   MY_VARIABLE: my_value
+
+# Опционально: Другие настройки, такие как общие ресурсы и т. д.
