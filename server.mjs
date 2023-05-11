@@ -24,6 +24,7 @@ const privateVapidKey = process.env.VAPID_PRIVATE_KEY
 console.log({publicVapidKey, privateVapidKey})
 
 let subscriptionData = {};
+const subscriptions = new Set();
 
 webpush.setVapidDetails(
   `mailto:${process.env.VAPID_MAILTO}`,
@@ -64,6 +65,7 @@ app.get('/send-notification', (req, res) => {
 
 app.post("/save-subscription", async (req, res) => {
   subscriptionData = req.body;
+  subscriptions.add(subscriptionData);
   res.status(200).send({
     message: "Subscription saved",
   });
