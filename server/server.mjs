@@ -7,6 +7,7 @@ import cors from "cors"
 dotenv.config();
 
 const app = express()
+app.use(express.json())
 app.use(bodyParser.json())
 app.use(cors())
 
@@ -31,18 +32,16 @@ app.get('/', async(req, res) => {
 
 app.get('/send-notification', (req, res) => {
   webpush.sendNotification(subscriptionData, 'Test')
-  res.status(200).send({
-    message: subscriptionData
-  })
+  res.sendStatus(200);
 })
 
 app.post("/save-subscription", async (req, res) => {
   subscriptionData = req.body;
   res.status(200).send({
-    message: subscriptionData
+    message: 'Успешно'
   })
 });
 
-app.use(express.static('./public'))
+app.use(express.static('../public'))
 
-app.listen(process.env.PORT, () => console.log(`server started at ${process.env.PORT} port, http://localhost:4000`))
+app.listen(process.env.PORT, () => console.log(`server started at ${process.env.PORT} port, http://localhost:${process.env.PORT}`))
