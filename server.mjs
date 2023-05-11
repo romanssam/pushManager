@@ -24,6 +24,8 @@ webpush.setVapidDetails(
   privateVapidKey,
 )
 
+app.options("*", cors());
+
 app.get('/', async(req, res) => {
   res.status(200).send({
     message: 'gay'
