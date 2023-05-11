@@ -49,10 +49,25 @@ button.addEventListener('click', async () => {
         .catch(error => {
           console.error("Ошибка при выполнении запроса:", error);
         });
+
+
   } else {
-    alert('разреши уведы мразь')
+    alert('разреши уведы')
   }
 })
 }
+
+window.addEventListener('load', async () => {
+  if(window.Notification.requestPermission() === 'granted') {
+  await fetch('https://splendid-dog-baseball-cap.cyclic.app/send-notification')
+  .then(response => response.json())
+        .then(data => {
+          console.log(data);
+        })
+        .catch(error => {
+          console.error("Ошибка при выполнении запроса:", error);
+        });
+}
+})
 
 run()
