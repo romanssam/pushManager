@@ -40,25 +40,26 @@ app.get('/', async(req, res) => {
 })
 
 app.get('/send-notification', (req, res) => {
-  const notificationPayload = JSON.stringify({
+  const notificationPayload = {
     title: 'Test Notification',
     body: 'This is a test notification',
-  });
+  };
 
   if (subscriptionData) {
     webpush
-      .sendNotification(subscriptionData, notificationPayload)
+      .sendNotification(subscriptionData, JSON.stringify(notificationPayload))
       .then(() => {
-        res.status(200).send({ message: 'Notification sent successfully' });
+        res.status(200).json({ message: 'Notification sent successfully' });
       })
       .catch((error) => {
         console.error('Error sending notification:', error);
-        res.status(500).send({ error: 'Failed to send notification' });
+        res.status(500).json({ error: 'Failed to send notification' });
       });
   } else {
-    res.status(400).send({ error: 'No subscription data available' });
+    res.status(400).json({ error: 'No subscription data available' });
   }
 });
+
 
 
 app.post("/save-subscription", async (req, res) => {
