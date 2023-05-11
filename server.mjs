@@ -42,6 +42,6 @@ app.post("/save-subscription", async (req, res) => {
   })
 });
 
-app.use(express.static('../public'))
+app.use(express.static('./public'))
 
 app.listen(process.env.PORT, () => console.log(`server started at ${process.env.PORT} port, http://localhost:${process.env.PORT}`))
