@@ -18,7 +18,7 @@ const privateVapidKey = process.env.VAPID_PRIVATE_KEY
 
 console.log({publicVapidKey, privateVapidKey})
 
-let subscriptionData = null;
+let subscriptionData;
 
 webpush.setVapidDetails(
   `mailto:${process.env.VAPID_MAILTO}`,
