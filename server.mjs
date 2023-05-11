@@ -31,15 +31,33 @@ app.get('/', async(req, res) => {
 })
 
 app.get('/send-notification', (req, res) => {
-  webpush.sendNotification(subscriptionData, 'Test')
-  res.sendStatus(200);
-})
+  const notificationPayload = JSON.stringify({
+    title: 'Test Notification',
+    body: 'This is a test notification',
+  });
+
+  if (subscriptionData) {
+    webpush
+      .sendNotification(subscriptionData, notificationPayload)
+      .then(() => {
+        res.status(200).send({ message: 'Notification sent successfully' });
+      })
+      .catch((error) => {
+        console.error('Error sending notification:', error);
+        res.status(500).send({ error: 'Failed to send notification' });
+      });
+  } else {
+    res.status(400).send({ error: 'No subscription data available' });
+  }
+});
+
 
 app.post("/save-subscription", async (req, res) => {
   subscriptionData = req.body;
-  res.status(200).send({
-    message: subscriptionData
-  })
+});
+
+app.get('/sw.js', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'public', 'sw.js'));
 });
 
 app.use(express.static('./public'))
