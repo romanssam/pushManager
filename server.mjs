@@ -27,7 +27,7 @@ let subscriptionData = {};
 const subscriptions = new Set();
 
 webpush.setVapidDetails(
-  `mailto:${process.env.VAPID_MAILTO}`,
+  `${process.env.VAPID_MAILTO}`,
   publicVapidKey,
   privateVapidKey,
 )
@@ -45,15 +45,19 @@ app.get('/send-notification', (req, res) => {
   };
 
   if (subscriptionData) {
-    webpush
-      .sendNotification(subscriptionData, JSON.stringify(notificationPayload))
-      .then(() => {
-        res.status(200).json({ message: 'Notification sent successfully' });
-      })
-      .catch((error) => {
-        console.error('Error sending notification:', error);
-        res.status(500).json({ error: 'Failed to send notification' });
-      });
+    // Отправка уведомления каждому клиенту в подписке
+    subscriptions.forEach((subscription) => {
+      webpush
+        .sendNotification(subscription, JSON.stringify(notificationPayload))
+        .then(() => {
+          console.log('Notification sent successfully');
+        })
+        .catch((error) => {
+          console.error('Error sending notification:', error);
+        });
+    });
+
+    res.status(200).json({ message: 'Notification sent successfully' });
   } else {
     res.status(400).json({ error: 'No subscription data available' });
   }
